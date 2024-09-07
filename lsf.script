@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#BSUB -n 6
+#BSUB -W 24:00
+#BSUB -R rusage[mem=5000]
+#BSUB -J abcdef
+#BSUB -o output.log
+#BSUB -e error.log
+#BSUB -q parallel
+
+module load gcc/4.8.1
+module load mpich/3.0.4 
+
+mpiexec ./xcutable
+
+echo ""
+date '+RUN ENDED THE %m/%d/%y AT %H:%M:%S'
+echo ""
+echo ""
+echo "==> Resulting STATUS = $STATUS"
+echo ""
